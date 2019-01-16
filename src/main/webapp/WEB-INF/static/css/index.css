@@ -1,0 +1,17 @@
+#page-wrapper{
+    padding-top: 20px;
+}
+.modal {
+    background-color: transparent !important;
+    box-shadow:none;
+    overflow: auto;
+    max-height: 100% !important;
+    width: 100% !important;
+
+}
+#addLists .minetips{
+    color: #f3989b;
+    position: absolute;
+    right: 0;
+    top: 10px;
+}

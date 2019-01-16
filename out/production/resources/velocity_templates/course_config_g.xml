@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--主要用于过程性考核知识点清单-->
+<config>
+	<outlines>
+	</outlines>
+	<video>
+	</video>
+	<mainMenus>
+	</mainMenus>
+	<tools>
+	</tools>
+	<otherLinks>
+	</otherLinks>
+	<manifest module="$subject.module" code="$subject.code">
+		<name>$subject.title</name>
+		#set($k = 0)
+		#foreach($chapter in $chapters)
+		<item id="$chapter.ccode" type="1">
+			<orderLabel>$chapter.title</orderLabel>
+			<title>$chapter.title </title>
+			<!--这是一个小节的内容-->
+			#foreach($know in $chapter.knows)
+			#set($k = $k + 1)
+			<item id="$know.kcode" type="3">
+				<orderLabel></orderLabel>
+				<title>知识点$k:$know.title</title>
+			</item>
+			#end
+		</item>
+		#end
+	</manifest>
+</config>

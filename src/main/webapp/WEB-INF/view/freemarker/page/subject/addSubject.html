@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>编辑科目</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/lib/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/css/font_eolqem241z66flxr.css" media="all"/>
+</head>
+<body class="childrenBody">
+<div class="layui-tab layui-tab-brief" lay-filter="subjectTab">
+    <ul class="layui-tab-title">
+        <li class="layui-this" lay-id="subject">科目</li>
+        <!--<li lay-id="chapter">章节</li>-->
+        <li lay-id="know">知识点</li>
+        <li lay-id="question">测评题</li>
+    </ul>
+    <div class="layui-tab-content" style="height: 100px;">
+        <div class="layui-tab-item layui-show">
+            <form class="layui-form" id="subjectForm">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">科目名称</label>
+                    <div class="layui-input-block">
+                        <input type="hidden" name="id" id="gsubjectId">
+                        <input type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入科目">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">科目代码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="code" class="layui-input" lay-verify="required" placeholder="请输入科目代码">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit="" lay-filter="addSubject">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--<div class="layui-tab-item">
+            <div class="layui-inline" id="chapterAddBtn">
+                <a class="layui-btn layui-btn-normal chapter_btn">添加章节</a>
+            </div>
+            <div class="layui-form chapterList">
+                <table class="layui-table">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="text-align:left;">章节编号</th>
+                        <th>章节名称</th>
+                        <th>所属科目</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="chapter_content"></tbody>
+                </table>
+                <div id="page"></div>
+            </div>
+            <div id="chapterDivEntry">
+                <form class="layui-form" id="addChapterForm">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">章节编码</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="ccode" lay-verify="required"
+                                   placeholder="请输入章节编码">
+                            <input type="hidden" name="subjectId" id="chapter_add_sid">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">课程视频编码</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="cctitle" lay-verify="required"
+                                   placeholder="请输入课程视频编码">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">章节名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="title" lay-verify="required"
+                                   placeholder="请输入章节名称">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">视频地址</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="video" lay-verify="required"
+                                   placeholder="请输入视频地址">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="addChapter">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="chapterDivEdit">
+                <form class="layui-form" id="chapterFormEdit">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">章节编码</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="ccode" id="eccode" lay-verify="required"
+                                   placeholder="请输入章节编码">
+                            <input type="hidden" name="subjectId" id="chapter_edit_sid" class="subjectId">
+                            <input type="hidden" name="id" id="ecid">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">课程视频编码</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="cctitle" id="ecctitle" lay-verify="required"
+                                   placeholder="请输入课程视频编码">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">章节名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="title" id="etitle" lay-verify="required"
+                                   placeholder="请输入章节名称">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">视频地址</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="video" id="evideo" lay-verify="required"
+                                   placeholder="请输入视频地址">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="editChapter">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>-->
+        <div class="layui-tab-item">
+            <div class="layui-inline" id="knowAddBtn">
+                <a class="layui-btn layui-btn-normal know_btn">添加知识点</a>
+            </div>
+            <div class="layui-form knowList">
+                <table class="layui-table">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="text-align:left;">知识点编号</th>
+                        <th>知识点名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="know_content"></tbody>
+                </table>
+                <div id="kpage"></div>
+            </div>
+            <div id="knowDiv">
+                <form class="layui-form" id="addKnowForm">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">知识点编号</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input kcode" name="kcode" id="addKnowCode" lay-verify="required"
+                                   placeholder="请输入知识点编号">
+                            <input type="hidden" name="subjectId" class="subjectId" id="know_add_sid">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">知识点名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input title" name="title" lay-verify="required"
+                                   placeholder="请输入知识点名称">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="addKnow">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="knowDivEdit">
+                <form class="layui-form" id="knowFormEdit">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">知识点编号</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input kcode" name="kcode" id="ekcode" lay-verify="required"
+                                   placeholder="请输入知识点编号">
+                            <input type="hidden" name="id" id="kid">
+                            <input type="hidden" name="subjectId" id="know_edit_sid" class="subjectId">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">知识点名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input title" name="title" id="ktitle" lay-verify="required"
+                                   placeholder="请输入知识点名称">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="editKnow">立即提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="layui-tab-item">
+            <div class="layui-inline" id="questionAddBtn">
+                <a class="layui-btn layui-btn-normal question_btn">添加测评题</a>
+            </div>
+            <div class="layui-form questionList">
+                <table class="layui-table">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="text-align:left;">题干</th>
+                        <th>所属知识点</th>
+                        <th>答案</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="question_content"></tbody>
+                </table>
+                <div id="qpage"></div>
+            </div>
+            <div id="questionDiv">
+                <form class="layui-form" id="addQuestionForm">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">题目编号</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input qcode" name="qcode" id="addQuestionCode" lay-verify="required"
+                                   placeholder="请输入题目编号">
+                            <input type="hidden" name="subjectId" class="subjectId" id="question_add_sid">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">题干</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="请输入题干" class="layui-textarea" name="title"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所属知识点</label>
+                        <div class="layui-input-block">
+                            <select name="knowId" class="aknow" lay-filter="know">
+                                <option value="0">---请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">题型</label>
+                        <div class="layui-input-block">
+                            <select name="type" class="type" lay-filter="type">
+                                <option value="single_choice">单选题</option>
+                                <option value="multi_choice">多选题</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">A.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optiona" placeholder="请输入选项内容A">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">B.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optionb" placeholder="请输入选项内容B">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">C.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optionc" placeholder="请输入选项内容C">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">D.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optiond" placeholder="请输入选项内容D">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">E.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optione" placeholder="请输入选项内容E">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">F.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optionf" placeholder="请输入选项内容F">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">G.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optiong" placeholder="请输入选项内容G">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">正确答案</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="answer" placeholder="请输入正确答案">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">答案解析</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="请输入答案解析" name="analysis" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="addQuestion">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="questionDivEdit">
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">题目编号</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input qcode" name="qcode" id="eqcode" lay-verify="required"
+                                   placeholder="请输入题目编号">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">题干</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="请输入题干" class="layui-textarea" name="title" id="eqtitle"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所属知识点</label>
+                        <div class="layui-input-block">
+                            <select name="knowId" id="eqknowId" class="know" lay-filter="know">
+                                <option value="0">---请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">题型</label>
+                        <div class="layui-input-block">
+                            <select name="type" id="eqtype" class="type" lay-filter="type">
+                                <option value="single_choice">单选题</option>
+                                <option value="multi_choice">多选题</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">A.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optiona" id="optiona" placeholder="请输入选项内容A">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">B.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optionb" id="optionb" placeholder="请输入选项内容B">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">C.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optionc" id="optionc" placeholder="请输入选项内容C">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">D.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optiond" id="optiond" placeholder="请输入选项内容D">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">E.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optione" id="optione" placeholder="请输入选项内容E">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">F.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optionf" id="optionf" placeholder="请输入选项内容F">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">G.</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="optiong" id="optiong" placeholder="请输入选项内容G">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">正确答案</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" name="answer" id="eanswer" placeholder="请输入正确答案">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">答案解析</label>
+                        <div class="layui-input-block">
+                        <textarea placeholder="请输入答案解析" name="analysis" id="eanalysis"
+                                  class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="editQuestion">立即提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/lib/layui/layui.js"></script>
+<script type="text/javascript" src="/js/admin/subject/editSubject.js"></script>
+
+</body>
+</html>

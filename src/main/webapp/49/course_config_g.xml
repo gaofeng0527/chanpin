@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--主要用于过程性考核知识点清单-->
+<config>
+	<outlines>
+	</outlines>
+	<video>
+	</video>
+	<mainMenus>
+	</mainMenus>
+	<tools>
+	</tools>
+	<otherLinks>
+	</otherLinks>
+	<manifest module="$subject.module" code="001">
+		<name>测试A</name>
+						<item id="3让" type="3">
+			<orderLabel></orderLabel>
+			<title>知识点1:334</title>
+		</item>
+				<item id="444" type="3">
+			<orderLabel></orderLabel>
+			<title>知识点2:333</title>
+		</item>
+				<item id="ch_01_know" type="3">
+			<orderLabel></orderLabel>
+			<title>知识点3:第一知识点</title>
+		</item>
+				<item id="ch_04_know" type="3">
+			<orderLabel></orderLabel>
+			<title>知识点4:方芳芳</title>
+		</item>
+				<item id="的的的" type="3">
+			<orderLabel></orderLabel>
+			<title>知识点5:订单</title>
+		</item>
+			</manifest>
+</config>

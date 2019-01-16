@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eduedu.manul.dao.mybatis.mapper.ChapterMapper">
+
+
+    <select id="findChapterBySubjectIds" resultType="com.eduedu.manul.domain.Chapter" parameterType="long">
+        SELECT id,title,ccode,cctitle,video,subject_id AS subjectId FROM t_chapter WHERE subject_id = #{subjectId} ORDER BY id
+    </select>
+
+    <select id="findChapterBySubjectId" resultMap="chapterMap" parameterType="long">
+        SELECT c.*,s.title as s_title FROM t_chapter AS c,t_subject AS s WHERE c.subject_id = s.id AND c.subject_id = #{subjectId} ORDER BY c.ccode
+    </select>
+
+    <select id="findChapterById" resultType="com.eduedu.manul.domain.Chapter" parameterType="long">
+        SELECT id,ccode,cctitle,video,subject_id AS subjectId,title FROM t_chapter WHERE id = #{id}
+    </select>
+
+    <resultMap id="chapterMap" type="Chapter">
+        <id property="id" column="id"/>
+        <result property="ccode" column="ccode"/>
+        <result property="title" column="title"/>
+        <result property="cctitle" column="cctitle"/>
+        <result property="video" column="video"/>
+        <result property="subjectId" column="subject_id"/>
+        <association property="subject" javaType="Subject">
+            <id property="id" column="subject_id"></id>
+            <result property="title" column="s_title"></result>
+        </association>
+    </resultMap>
+
+    <insert id="addChapter" parameterType="Chapter" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_chapter (ccode,title,cctitle,video,subject_id)
+        VALUE(#{ccode},#{title},#{cctitle},#{video},#{subjectId})
+    </insert>
+
+    <update id="editChapter" parameterType="Chapter">
+        UPDATE t_chapter SET ccode = #{ccode},cctitle=#{cctitle},video=#{video},title=#{title} WHERE id = #{id}
+    </update>
+
+    <resultMap id="chaptersMap" type="Chapter">
+        <id property="id" column="id"/>
+        <result property="ccode" column="ccode"/>
+        <result property="title" column="title"/>
+        <result property="cctitle" column="cctitle"/>
+        <result property="video" column="video"/>
+        <result property="subjectId" column="subject_id"/>
+        <collection property="knows" ofType="Know" select="knows" column="id"/>
+    </resultMap>
+    <select id="chapters" parameterType="long" resultMap="chaptersMap">
+        SELECT c.id,c.ccode,c.cctitle,c.video,c.subject_id,c.title FROM t_chapter AS c WHERE c.subject_id = #{id}
+        ORDER BY c.ccode
+    </select>
+    
+    <select id="knows" parameterType="long" resultType="Know">
+        SELECT k.id,k.times,k.title,k.kcode,k.chapter_id AS chapterId,k.subject_id AS subject_id FROM t_know AS k WHERE chapter_id = #{id} ORDER BY k.kcode
+    </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eduedu.manul.dao.mybatis.mapper.KnowMapper">
+
+    <resultMap id="knowMap" type="Know">
+        <id property="id" column="id"/>
+        <result property="times" column="times"/>
+        <result property="title" column="title"/>
+        <result property="kcode" column="kcode"/>
+        <result property="chapterId" column="chapter_id"/>
+        <result property="subjectId" column="subject_id"/>
+        <association property="chapter" javaType="Chapter">
+            <id property="id" column="chapter_id"/>
+            <result property="title" column="c_title"/>
+        </association>
+    </resultMap>
+    <select id="findKnowBySubjectId" resultMap="knowMap" parameterType="long">
+        SELECT k.id,k.times,k.title,k.kcode,k.chapter_id,k.subject_id,c.title AS c_title FROM t_know AS k JOIN t_chapter AS c ON k.chapter_id = c.id WHERE k.subject_id = #{subjectId} GROUP BY k.chapter_id,k.title ORDER BY c.ccode,k.kcode
+    </select>
+
+    <select id="findKnowById" resultType="Know" parameterType="long">
+        SELECT id,times,title,kcode,chapter_id AS chapterId,subject_id AS subjectId FROM t_know WHERE id = #{id}
+    </select>
+
+    <insert id="addKnow" parameterType="Know" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_know (times,title,kcode,chapter_id,subject_id) VALUE(#{times},#{title},#{kcode},#{chapterId},#{subjectId})
+    </insert>
+
+    <update id="editKnow" parameterType="Know">
+        UPDATE t_know SET times = #{times},title = #{title},kcode = #{kcode},chapter_id = #{chapterId} WHERE id = #{id}
+    </update>
+</mapper>

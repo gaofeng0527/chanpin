@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest module="$subject.module" code="$subject.code" definition="$subject.definition" requireRTE="$subject.requireRTE" requiredAlertQuestion="$subject.requireAQ">
+    <name>$subject.title</name>
+    <authentication enable="true" service="http://member.edu-edu.com.cn/CourseAuthV2_interface.php">
+        <domain name="video" value="stream"></domain>
+    </authentication>
+    #set($m=0)
+    #set($k=0)
+    #foreach($chapter in $chapters)
+    #set($m=$m+1)
+    <item id="$chapter.ccode" cctitle="$chapter.cctitle" title='$chapter.title' video-entry="$chapter.video">
+        #foreach($know in $chapter.knows)
+        #set($k = $k +1)
+        <tag visible="false" action="know" is-objective="true" time="$know.times" title="知识点$k：$know.title"
+             id="$know.kcode"/>
+        #end
+    </item>
+    #end
+    <knows>
+        #set($q=0)
+        #foreach($question in $questions)
+        #set($q=$q+1)
+        <know id="$question.know.kcode"><![CDATA[
+	<div id="$question.qcode" class="popup-questions" knowid="$question.know.kcode">
+		<p class="popup-questions-title">$question.desc</p>
+		<div class="question" code="1" type="$question.type" answer="$question.answer" score="$question.score">
+			<p class="label">$q.$question.title</p>
+			<ul class="options">
+			#if($question.optiona && "" != $question.optiona)
+                <li code="a">A.$question.optiona</li>
+			#end
+			#if($question.optionb && "" != $question.optionb)
+                <li code="b">B.$question.optionb</li>
+			#end
+			#if($question.optionc && "" != $question.optionc)
+                <li code="c">C.$question.optionc</li>
+			#end
+			#if($question.optiond && "" != $question.optiond)
+                <li code="d">D.$question.optiond</li>
+			#end
+			#if($question.optione && "" != $question.optione)
+                <li code="e">E.$question.optione</li>
+			#end
+			#if($question.optionf && "" != $question.optionf)
+                <li code="f">F.$question.optionf</li>
+			#end
+			#if($question.optiong && "" != $question.optiong)
+                <li code="g">G.$question.optiong</li>
+			#end
+			<div class="answer">
+			<p>【答案】$question.upAnswer</p>
+			<p>【解析】$question.analysis</p>
+			<p>【知识点】$question.know.title</p>
+			</div>
+		</div>
+	</div>
+		]]></know>
+        #end
+    </knows>
+</manifest>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest module="2" code="$subject.code" definition="3" requireRTE="true" requiredAlertQuestion="true">
+    <name>$subject.title</name>
+    <authentication enable="true" service="http://member.edu-edu.com.cn/CourseAuthV2_interface.php">
+        <domain name="video" value="stream"></domain>
+    </authentication>
+    <knows>
+        #set($q=0)
+        #foreach($question in $questions)
+        #set($q=$q+1)
+        <know id="$question.know.kcode"><![CDATA[
+	<div id="$question.qcode" class="popup-questions" knowid="$question.know.kcode">
+		<p class="popup-questions-title">请认真答题，答题结果将记入知识点测评的成绩！</p>
+		<div class="question" code="1" type="$question.type" answer="$question.lowerAnswer" score="100">
+			<p class="label">$q.$question.title</p>
+			<ul class="options">
+			#if($question.optiona && "" != $question.optiona)
+                <li code="a">A.$question.optiona</li>
+			#end
+			#if($question.optionb && "" != $question.optionb)
+                <li code="b">B.$question.optionb</li>
+			#end
+			#if($question.optionc && "" != $question.optionc)
+                <li code="c">C.$question.optionc</li>
+			#end
+			#if($question.optiond && "" != $question.optiond)
+                <li code="d">D.$question.optiond</li>
+			#end
+			#if($question.optione && "" != $question.optione)
+                <li code="e">E.$question.optione</li>
+			#end
+			#if($question.optionf && "" != $question.optionf)
+                <li code="f">F.$question.optionf</li>
+			#end
+			#if($question.optiong && "" != $question.optiong)
+                <li code="g">G.$question.optiong</li>
+			#end
+			<div class="answer">
+			<p>【答案】$question.upAnswer</p>
+			#if($question.analysis && "" != $question.analysis)
+			<p>【解析】$question.analysis</p>
+			#end
+			<p>【知识点】$question.know.title</p>
+			</div>
+		</div>
+	</div>
+		]]></know>
+        #end
+    </knows>
+</manifest>

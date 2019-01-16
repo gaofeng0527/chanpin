@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>华夏大地在线考试</title>
+    <style>
+        *{margin:0;padding:0;font-family: 'microsoft yahei',sans-serif;}
+        body{background: #f4f4f4;}
+        a{text-decoration: none;}
+        .header{width:100%;height:68px;background: #393939;}
+        .container{width:900px;margin:0 auto;position: relative;}
+        .header h3{font-size:24px;color:#fff;font-weight: normal;line-height: 68px;}
+        .error-box{width:600px;height:auto;padding:30px 50px;background: #fff;border: 1px solid #e3e3e3;margin:30px auto;overflow: hidden;}
+        .error-icon{width:250px;height:246px;background: url("/image/prompt.png") center no-repeat;float: left;}
+        .error-content{width:350px;height:auto;float:left;color:#999;}
+        .error-content h3.title{font-size:30px;font-weight: normal;line-height: 48px;color:#666;}
+        .error-content p,
+        .error-content li{font-size:14px;line-height:24px;}
+        .error-content ul{margin-left:20px;}
+        .error-content .btn{width:170px;height:46px;background:#35c4db;display: block;margin-top:10px;margin-bottom: 10px;text-align: center;line-height: 46px;font-size:16px;color:#fff;border-radius: 5px;}
+        .error-content .btn:hover{background: #2fa4b8;}
+        .header .logout{font-size:16px;line-height:20px;padding:10px 5px 10px 40px;border:1px solid #393939;background:url("/image/logout.png") left center no-repeat;position: absolute;right:0;top:15px;color:#fff;}
+        .header .logout:hover{border:1px solid #505050;border-radius: 5px;background-color: #4d4d4d
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="header">
+        <div class="container">
+            <h3>华夏大地在线考试平台</h3>
+            <a href="/logout" class="logout">退出</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="error-box">
+            <div class="error-icon"></div>
+            <div class="error-content">
+                <h3 class="title">${prompt!'网络不稳定或断网'}</h3>
+                <p>请咨询考试管理人员，解决问题。</p>
+                <a href="/logout" class="btn">返回系统主页</a>
+                <p>您可以尝试如下操作：</p>
+                <ul>
+                    <li>请尝试刷新页面</li>
+                    <li>请检查连接的网络是否正常</li>
+                    <li>请检查您的代理服务器设置</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

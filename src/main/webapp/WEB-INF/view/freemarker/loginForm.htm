@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>华夏大地在线工具</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="/css/edu_generic.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/semantic-ui/2.2.9/semantic.css">
+
+    <style type="text/css">
+        .head_logo {
+            width: 990px;
+            margin: 0 auto;
+            height: 80px;
+        }
+
+        #logo {
+            position: relative;
+            width: 900px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        #logo img {
+            position: absolute;
+            left: -9px;
+            width: 325px;
+            top: 15px;
+        }
+
+        .login_center {
+            width: 100%;
+            height: 475px;
+            background-color: #050f19;
+        }
+
+        .login_box {
+            width: 900px;
+            margin: 0 auto;
+            height: 475px;
+            position: relative;
+            background: url("/image/bg_img_universe.jpg") no-repeat;
+        }
+
+        #box {
+            width: 300px;
+            height: 400px;
+            background: #ffffff;
+            position: absolute;
+            top: 38px;
+            right: 0px;
+        }
+
+        #login_div {
+            width: 100%;
+            height: 339px;
+
+        }
+
+        #submit_btn {
+            width: 250px;
+            height: 40px;
+            background: #000000;
+            color: #ffffff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            margin: 25px auto;
+            display: block;
+            border-radius: 3px;
+            font-size: 20px;
+            font-family: 'Microsoft YaHei';
+        }
+
+        .frame {
+            height: 42px;
+            line-height: 42px;
+            width: 250px;
+            margin: 0 auto;
+            border: 1px solid #D7D7D7;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .frame label {
+            width: 45px;
+            height: 42px;
+            display: inline-block;
+            border-right: 1px solid #D7D7D7;
+            float: left;
+        }
+
+        .frame input {
+            width: 180px;
+            height: 30px;
+            padding-left: 5px;
+            line-height: 30px;
+            line-height: 38px;
+            background: #fff;
+            color: #333;
+            border-radius: 2px;
+            font-family: Verdana, Tahoma, Arial;
+            font-size: 16px;
+            ime-mode: disabled;
+            border: none;
+            outline: none;
+            margin-top: 5px;
+            float: left;
+        }
+
+        .prompt {
+            border: 1px solid #FFE57D;
+            width: 250px;
+            margin: 5px auto;
+            padding-top: 3px;
+            text-align: center;
+            padding-bottom: 3px;
+            background: #FFF6D2;
+            color: #666666;
+            font-size: 12px;
+            margin-bottom: -12px;
+        }
+
+        #user_name label {
+            background: url("/image/username.png") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #user_pass label {
+            background: url("/image/password.png") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .welcome {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 17px;
+            margin-top: 7px;
+        }
+
+        .bj_color_s { /*页面整体色系*/
+            color: #000000;
+        }
+
+        #logo a {
+            display: block;
+        }
+
+        .logout_icon {
+            position: absolute;
+            right: 0px;
+            top: 32px;
+            width: 40px;
+            padding-left: 50px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 3px;
+            border: 1px solid #747474;
+            color: #000000;
+        }
+
+        .enrollment_icon {
+            position: absolute;
+            right: 0px;
+            top: 32px;
+            width: 88px;
+            padding-left: 12px;
+            height: 33px;
+            line-height: 32px;
+            border-radius: 3px;
+            border: 1px solid #747474;
+            color: #000000;
+            font-size: 17px;
+        }
+
+        .fa-mortar-board {
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            font-size: 25px;
+            color: #000000;
+        }
+
+        .fa-sign-out {
+            position: absolute;
+            left: 12px;
+            top: 2px;
+            font-size: 28px;
+            color: #000000;
+        }
+
+        .footer {
+            width: 900px;
+            margin: 0px auto;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .honor_wall {
+            width: 900px;
+            margin: 0 auto;
+            height: 100px;
+        }
+
+        .honor_wall ul {
+            width: 100%;
+        }
+
+        .honor_wall ul li {
+            width: 25%;
+            text-align: center;
+            float: left;
+            margin-top: 11px;
+        }
+
+        .honor_wall ul li span {
+            display: block;
+            width: 40%;
+            height: 88px;
+            margin: 0 auto;
+        }
+
+        .honor_wall ul li:nth-child(1) span {
+            background: url("/image/honor_img_1.png");
+            background-size: 100% 100%;
+        }
+
+        .honor_wall ul li:nth-child(2) span {
+            background: url("/image/honor_img_2.png");
+            background-size: 100% 100%;
+        }
+
+        .honor_wall ul li:nth-child(3) span {
+            background: url("/image/honor_img_3.png");
+            background-size: 100% 100%;
+        }
+
+        .honor_wall ul li:nth-child(4) span {
+            background: url("/image/honor_img_4.png");
+            background-size: 100% 100%;
+
+        }
+
+        .honor_wall ul li p {
+            white-space: nowrap;
+        }
+
+        .edu_edu_img {
+            position: absolute;
+            left: 64px;
+            bottom: 63px;
+        }
+
+        .bdu_bdu_img {
+            position: absolute;
+            right: 64px;
+            bottom: 63px;
+        }
+
+        .edu_edu_img_title {
+            position: absolute;
+            left: 55px;
+            bottom: 30px;
+            display: none;
+        }
+
+        .bdu_bdu_img_title {
+            position: absolute;
+            right: 49px;
+            bottom: 30px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="head_logo">
+    <div id="logo">
+        <a href="http://www.edu-edu.com" target="_blank"><img src="/image/edu_online_exam_black.png" alt="华夏大地学习后台"></a>
+    </div>
+</div>
+<div class="login_center">
+    <div class="login_box">
+        <div id="box">
+            <p class="welcome bj_color_s">欢迎登录</p>
+            <div id="login_div">
+                <form class="login_form" action="/login" method="post">
+                    <div class="prompt">${error!"请输入正确的账号和密码"}</div>
+                    <div id="user_name" class="frame">
+                        <label></label>
+                        <input type="text" name="username" placeholder="请输入账号" id="username">
+                    </div>
+                    <div id="user_pass" class="frame">
+                        <label></label>
+                        <input type="password" name="password" placeholder="请输入密码" id="password">
+                    </div>
+
+                    <input type="submit" value="登&nbsp;&nbsp;&nbsp;&nbsp;录" id="submit_btn">
+                </form>
+
+                <a href="http://i.edu-edu.com.cn/" target="_blank" class="edu_edu_img" title="华夏大地">
+                    <img src="/image/edu_edu.png" alt="" width="41" height="41">
+                </a>
+                <p class="edu_edu_img_title">华夏大地</p>
+                <p class="bdu_bdu_img_title">大数据大学</p>
+                <a href="https://bigdatauniversity.com.cn/" target="_blank" class="bdu_bdu_img" title="大数据大学">
+                    <img src="/image/bdu_bdu.png" alt="" width="41" height="41">
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="honor_wall">
+    <ul>
+        <li>
+            <span></span>
+            <p>全国十佳网络教育机构</p>
+        </li>
+        <li>
+            <span></span>
+            <p>建国60周年最具影响力远程教育品牌</p>
+        </li>
+        <li>
+            <span></span>
+            <p>全国首批网络教育示范基地</p>
+        </li>
+        <li>
+            <span></span>
+            <p>教育部考试中心战略合作伙伴</p>
+        </li>
+    </ul>
+</div>
+<div class="footer">
+    Copyright©2000-2015 华夏大地教育网 版权所有<br/>
+    京 ICP 证 000110 出版物经营许可证 京公网安备110301000303
+</div>
+
+<script src="/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+
+
+    $(function () {
+        var _topWin = window;
+        while (_topWin != _topWin.parent.window) {
+            _topWin = _topWin.parent.window;
+        }
+        if (window != _topWin){
+            _topWin.document.location.href = '/loginForm.htm';
+        }
+
+    });
+
+    //登录表单账号字段的失焦后验证
+    $('#username').blur(function () {
+        if (this.value.trim() == '') {
+            $(".prompt").css({'background': '#ffebeb', 'border': '1px solid #faccc6', 'color': '#e4393c'});
+            $(".prompt").html("账号不能为空");
+        } else {
+            $(".prompt").html("请输入正确的账号和密码");
+        }
+    });
+
+    //登录表单密码字段的失焦后验证
+    $('#password').blur(function () {
+        if (this.value.trim() == '') {
+            $(".prompt").css({'background': '#ffebeb', 'border': '1px solid #faccc6', 'color': '#e4393c'});
+            $(".prompt").html("密码不能为空");
+        } else {
+            $(".prompt").html("请输入正确的账号和密码");
+        }
+    });
+
+    //登录表单提交前验证
+    $('#submit_btn').click(function () {
+        var usernameValue = $('#username').val().trim();
+        var passwordValue = $('#password').val().trim();
+
+        if (usernameValue == '' || passwordValue == '') {
+            alert("账号和密码不可为空");
+            return false;
+        } else {
+            return true;
+        }
+    });
+
+    //退出和报名按钮的点击效果
+    $(".enrollment_icon").on("mousedown", function () {
+        $(".enrollment_icon span").css("color", "#ffffff")
+        $(".enrollment_icon").css({"color": "#ffffff", "background": "#565656"});
+    }).on("mouseup", function () {
+        $(".enrollment_icon span").css("color", "#000000")
+        $(".enrollment_icon").css({"color": "#000000", "background": "#ffffff"});
+    });
+    $(".logout_icon").on("mousedown", function () {
+        $(".logout_icon span").css("color", "#ffffff")
+        $(".logout_icon").css({"color": "#ffffff", "background": "#565656"});
+    }).on("mouseup", function () {
+        $(".logout_icon span").css("color", "#000000")
+        $(".logout_icon").css({"color": "#000000", "background": "#ffffff"});
+    });
+
+    //华夏大地入口效果
+    $(".bdu_bdu_img").on("mouseover", function () {
+        $(".bdu_bdu_img_title").css("display", "block");
+        $(this).css({"transform": "scale(1.3,1.3)", "transition": "400ms"});
+    }).on("mouseout", function () {
+        $(".bdu_bdu_img_title").css("display", "none");
+        $(this).css({"transform": "rotate(0deg)", "transition": "400ms"});
+    });
+
+    //BDU 入口效果
+    $(".edu_edu_img").on("mouseover", function () {
+        $(".edu_edu_img_title").css("display", "block");
+        $(this).css({"transform": "scale(1.3,1.3)", "transition": "400ms"});
+    }).on("mouseout", function () {
+        $(".edu_edu_img_title").css("display", "none");
+        $(this).css({"transform": "rotate(0deg)", "transition": "400ms"});
+    });
+
+
+</script>
+
+</body>
+
+
+</html>
