@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/chanpin.iml" filepath="$PROJECT_DIR$/chanpin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chanpin_main.iml" filepath="$PROJECT_DIR$/.idea/modules/chanpin_main.iml" group="chanpin" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chanpin_test.iml" filepath="$PROJECT_DIR$/.idea/modules/chanpin_test.iml" group="chanpin" />
+    </modules>
+  </component>
+</project>
